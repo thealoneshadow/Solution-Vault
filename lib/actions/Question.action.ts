@@ -1,15 +1,15 @@
 "use server";
 
 import Question from "@/database/question.model";
-import { connnectToDatabase } from "../mongoose";
+import { connectToDatabase } from "../mongoose";
 import Tag from "@/database/tag.model";
 import { CreateQuestionParams, GetQuestionsParams } from "./shared.types";
 import User from "@/database/user.model";
-import e from "express";
+import { revalidatePath } from "next/cache";
 
 export async function createQuestion(params: CreateQuestionParams) {
   try {
-    connnectToDatabase();
+    connectToDatabase();
 
     const { title, content, tags, author, path } = params;
 
@@ -30,15 +30,17 @@ export async function createQuestion(params: CreateQuestionParams) {
     await Question.findByIdAndUpdate(question._id, {
       $push: { tags: { $each: tagDocuments } },
     });
+    revalidatePath(path);
   } catch (e) {}
 }
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
-    connnectToDatabase();
+    connectToDatabase();
     const questions = await Question.find({})
       .populate({ path: "tags", model: Tag })
-      .populate({ path: "author", model: User });
+      .populate({ path: "author", model: User })
+      .sort({ createdAt: -1 });
     return { questions };
   } catch (e) {
     console.log(e);
