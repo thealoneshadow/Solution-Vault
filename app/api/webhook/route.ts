@@ -53,6 +53,7 @@ export async function POST(req: Request) {
   }
 
   // Get the ID and type
+  // eslint-disable-next-line no-unused-vars
   const { id } = evt.data;
   const eventType = evt.type;
 
