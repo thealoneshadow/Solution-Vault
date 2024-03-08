@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/context/ThemeProvider";
 import type { Metadata } from "next";
 
 import "./globals.css";
+import "../styles/prism.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,11 +25,11 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Solution Valut",
+  title: "Solution Vault",
   description:
     "A community-driven platform for asking and answering questions about software development. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, game development, algorithms, data structures, and more.",
   icons: {
-    icon: "/assets/images/site-logo2.png",
+    icon: "/assets/images/site-logo.svg",
   },
 };
 

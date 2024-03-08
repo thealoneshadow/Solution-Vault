@@ -6,6 +6,7 @@ import { getTimeStamp, getFormattedNumber } from "@/lib/utils";
 
 interface QuestionProps {
   _id: string;
+  clerkId?: string | null;
   title: string;
   tags: {
     _id: string;
@@ -16,13 +17,14 @@ interface QuestionProps {
     name: string;
     picture: string;
   };
-  upvotes: number;
+  upvotes: string[];
   answers: Array<object>;
   views: number;
   createdAt: Date;
 }
 
 const QuestionCard = ({
+  clerkId,
   _id,
   title,
   tags,
@@ -67,7 +69,7 @@ const QuestionCard = ({
           <Metric
             imgUrl="/assets/icons/like.svg"
             alt="Upvotes"
-            value={getFormattedNumber(upvotes)}
+            value={getFormattedNumber(upvotes.length)}
             title=" Votes"
             textStyles="small-medium text-dark400_light800"
           />

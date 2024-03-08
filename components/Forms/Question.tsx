@@ -20,6 +20,7 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/Question.action";
 import { useRouter, usePathname } from "next/navigation";
+import { useTheme } from "@/context/ThemeProvider";
 
 const type: string = "create";
 
@@ -30,6 +31,7 @@ interface Props {
 const Question = ({ mongoUserId }: Props) => {
   const editorRef = useRef(null);
   const router = useRouter();
+  const { mode } = useTheme();
   const pathName = usePathname();
   const form = useForm<z.infer<typeof QuestionValidation>>({
     resolver: zodResolver(QuestionValidation),
@@ -169,6 +171,8 @@ const Question = ({ mongoUserId }: Props) => {
                       "alignright alignjustify | bullist numlist outdent indent",
                     content_style:
                       "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
                 />
               </FormControl>
