@@ -3,9 +3,8 @@ import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { QuestionFilters } from "@/constants/filters";
-import { getSavedQuestions, getUserById } from "@/lib/actions/User.action";
+import { getSavedQuestions } from "@/lib/actions/User.action";
 import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
 
 export default async function Collection() {
   const { userId: clerkId } = auth();

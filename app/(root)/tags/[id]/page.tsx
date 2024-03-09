@@ -1,14 +1,14 @@
 import QuestionCard from "@/components/cards/QuestionCard";
 import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
-import { IQuestion } from "@/database/question.model";
+// import { IQuestion } from "@/database/question.model";
 import { getQuestionsByTagId } from "@/lib/actions/tag.action";
 import { URLProps } from "@/types";
-import { auth } from "@clerk/nextjs";
+// import { auth } from "@clerk/nextjs";
 import React from "react";
 
 const Page = async ({ params, searchParams }: URLProps) => {
-  const { userId: clerkId } = auth();
+  // const { userId: clerkId } = auth();
   const result = await getQuestionsByTagId({
     tagId: params.id,
     searchQuery: searchParams.q,
