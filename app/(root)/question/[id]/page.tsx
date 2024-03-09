@@ -12,8 +12,9 @@ import { getUserById } from "@/lib/actions/User.action";
 import { redirect } from "next/navigation";
 import AllAnswers from "@/components/shared/AllAnswers";
 import Votes from "@/components/shared/Votes";
+import { URLProps } from "@/types";
 
-const page = async ({ params, searchParams }) => {
+const page = async ({ params, searchParams }: URLProps) => {
   const result = await getQuestionById({ questionId: params.id });
   const { userId: clerkId } = auth();
 
