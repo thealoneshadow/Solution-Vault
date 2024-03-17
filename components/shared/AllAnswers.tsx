@@ -7,6 +7,8 @@ import ParseHTML from "./ParseHTML";
 import Image from "next/image";
 import { getTimeStamp } from "@/lib/utils";
 import Votes from "./Votes";
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
+import { SignedIn } from "@clerk/nextjs";
 interface Props {
   userId: string;
   questionId: string;
@@ -33,7 +35,8 @@ const AllAnswers = async ({
       </div>
       <div>
         {result.answers.map((answer: any) => {
-          // const showActionButtons = JSON.stringify(userId) === JSON.stringify(answer.author._id);
+          const showActionButtons =
+            JSON.stringify(userId) === JSON.stringify(answer.author._id);
 
           return (
             <article key={answer._id} className="light-border border-b py-10">
@@ -72,6 +75,15 @@ const AllAnswers = async ({
                 </div>
               </div>
               <ParseHTML data={answer.content} />
+
+              <SignedIn>
+                {showActionButtons && (
+                  <EditDeleteAction
+                    type="Answer"
+                    itemId={JSON.stringify(answer._id)}
+                  />
+                )}
+              </SignedIn>
             </article>
           );
         })}

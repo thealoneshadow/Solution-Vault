@@ -64,7 +64,7 @@ const Stats = ({ totalQuestions, totalAnswers }: Props) => {
         />
 
         <StatsCard
-          imgUrl="/assets/icons/Bronze-medal.svg"
+          imgUrl="/assets/icons/bronze-medal.svg"
           value={0}
           title="Bronze Badges"
         />
