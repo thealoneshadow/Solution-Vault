@@ -1,9 +1,6 @@
 import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
-
 import { getQuestionById } from "@/lib/actions/Question.action";
 import { getUserById } from "@/lib/actions/User.action";
-
 import type { ParamsProps } from "@/types";
 import type { Metadata } from "next";
 import Question from "@/components/Forms/Question";
