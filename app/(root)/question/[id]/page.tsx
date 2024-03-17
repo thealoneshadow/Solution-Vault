@@ -7,15 +7,15 @@ import Metric from "@/components/shared/Metric";
 import ParseHTML from "@/components/shared/ParseHTML";
 import RenderTag from "@/components/shared/RenderTag";
 import Answers from "@/components/Forms/Answers";
-import { auth } from "@clerk/nextjs";
+import { SignedIn, auth } from "@clerk/nextjs";
 import { getUserById } from "@/lib/actions/User.action";
 import { redirect } from "next/navigation";
 import AllAnswers from "@/components/shared/AllAnswers";
 import Votes from "@/components/shared/Votes";
 import { URLProps } from "@/types";
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
 
 const page = async ({ params, searchParams }: URLProps) => {
-  const result = await getQuestionById({ questionId: params.id });
   const { userId: clerkId } = auth();
 
   let mongoUser;
@@ -26,6 +26,10 @@ const page = async ({ params, searchParams }: URLProps) => {
     return redirect("/sign-in");
   }
 
+  const result = await getQuestionById({ questionId: params.id });
+  if (!result) return null;
+
+  const showActionButtons = clerkId && clerkId === result?.author.clerkId;
   return (
     <>
       <div className="flex-start w-full flex-col">
@@ -94,7 +98,16 @@ const page = async ({ params, searchParams }: URLProps) => {
             <RenderTag key={tag._id} _id={tag._id} name={tag.name} />
           ))}
         </div>
+        <SignedIn>
+          {showActionButtons && (
+            <EditDeleteAction
+              type="Question"
+              itemId={JSON.stringify(result._id)}
+            />
+          )}
+        </SignedIn>
       </div>
+
       <AllAnswers
         questionId={result._id}
         userId={mongoUser._id}
