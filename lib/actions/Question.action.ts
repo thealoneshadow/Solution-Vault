@@ -12,6 +12,8 @@ import {
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
 
+
+// Create Question
 export async function createQuestion(params: CreateQuestionParams) {
   try {
     connectToDatabase();
@@ -52,6 +54,9 @@ export async function getQuestions(params: GetQuestionsParams) {
   }
 }
 
+
+
+// Get Question By ID
 export async function getQuestionById(params: GetQuestionByIdParams) {
   try {
     connectToDatabase();
@@ -73,6 +78,8 @@ export async function getQuestionById(params: GetQuestionByIdParams) {
   }
 }
 
+
+// Upvote Question
 export async function upvoteQuestion(params: QuestionVoteParams) {
   try {
     connectToDatabase();
@@ -119,6 +126,8 @@ export async function upvoteQuestion(params: QuestionVoteParams) {
   }
 }
 
+
+// Downvote Question
 export async function downvoteQuestion(params: QuestionVoteParams) {
   try {
     connectToDatabase();

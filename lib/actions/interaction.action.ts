@@ -7,6 +7,9 @@ import { connectToDatabase } from "@/lib/mongoose";
 
 import type { ViewQuestionParams } from "./shared.types";
 
+
+
+// View All Questions
 export async function viewQuestion(params: ViewQuestionParams) {
   try {
     connectToDatabase();

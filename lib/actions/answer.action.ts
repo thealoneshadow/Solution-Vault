@@ -19,6 +19,8 @@ import type {
   GetAnswersParams,
 } from "./shared.types";
 
+
+// Create Answer
 export async function createAnswer(params: CreateAnswerParams) {
   try {
     connectToDatabase();
@@ -56,6 +58,8 @@ export async function createAnswer(params: CreateAnswerParams) {
   }
 }
 
+
+// Edit Answers
 export async function editAnswer(params: EditAnswerParams) {
   try {
     connectToDatabase();
@@ -79,6 +83,9 @@ export async function editAnswer(params: EditAnswerParams) {
   }
 }
 
+
+
+// Delete Specific Answers
 export async function deleteAnswer(params: DeleteAnswerParams) {
   try {
     connectToDatabase();
@@ -107,6 +114,7 @@ export async function deleteAnswer(params: DeleteAnswerParams) {
   }
 }
 
+// Get Answers
 export async function getAnswers(params: GetAnswersParams) {
   try {
     connectToDatabase();
@@ -152,6 +160,8 @@ export async function getAnswers(params: GetAnswersParams) {
   }
 }
 
+
+// Get Answer By ID
 export async function getAnswerById(params: GetAnswerByIdParams) {
   try {
     connectToDatabase();
@@ -216,6 +226,8 @@ export async function upvoteAnswer(params: AnswerVoteParams) {
   }
 }
 
+
+// Downvote Answer
 export async function downvoteAnswer(params: AnswerVoteParams) {
   try {
     connectToDatabase();
