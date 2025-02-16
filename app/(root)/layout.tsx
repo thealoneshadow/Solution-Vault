@@ -1,5 +1,6 @@
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
+import Footer from "@/components/shared/navbar/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
 import React from "react";
 
@@ -17,6 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </section>
         <RightSidebar />
       </div>
+      <Footer />
     </main>
   );
 };
