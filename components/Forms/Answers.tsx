@@ -67,7 +67,7 @@ const Answers = ({ question, questionId, authorId }: Props) => {
           Write you answer here
         </h4>
 
-        <Button className="btn light-border-2 gap-1.5 rounded-md px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500">
+        {/* <Button className="btn light-border-2 gap-1.5 rounded-md px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500">
           <Image
             src="/assets/icons/stars.svg"
             alt="star"
@@ -76,7 +76,7 @@ const Answers = ({ question, questionId, authorId }: Props) => {
             className={`object-contain`}
           />
           Generate AI Answer
-        </Button>
+        </Button> */}
       </div>
       <Form {...form}>
         <form
@@ -140,7 +140,7 @@ const Answers = ({ question, questionId, authorId }: Props) => {
               className="primary-gradient w-fit text-white"
               disabled={isSubmitting}
             >
-              value
+              Submit
             </Button>
           </div>
         </form>
